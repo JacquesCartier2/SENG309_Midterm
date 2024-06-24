@@ -108,9 +108,9 @@ def encode_data(possible_values_dict, list_of_lists):
 
     return encoded_data
 
-def export_file(encoded_data_list):
+def export_file(encoded_data_list, filename):
     #create the new file and open for writing.
-    new_file = open("Encoded.csv",'w')
+    new_file = open(filename + ".csv",'w')
 
     string_to_write = ""
     for entry in encoded_data_list:
@@ -126,9 +126,10 @@ def export_file(encoded_data_list):
 
 file_path = "Maths.csv"
 data_list = csv_to_list(file_path)
+export_filename = "Encoded"
 
 attributes_data = data_list[0]
 values_data = data_list[1:len(data_list)]
 possible_values_data = get_possible_values(attributes_data,values_data)
 encoded_data = encode_data(possible_values_data,values_data)
-export_file(encoded_data)
+export_file(encoded_data, export_filename)
